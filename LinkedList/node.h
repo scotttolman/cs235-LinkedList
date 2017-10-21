@@ -37,16 +37,17 @@ Node <T> * insert(Node <T> * pCurrent, const T & t, bool after = false)
 		pNew->pNext = pCurrent;
 		pNew->pPrev = pCurrent->pPrev;
 		pCurrent->pPrev = pNew;
-		pNew->pPrev->pNext = pNew;
+		if (pNew->pPrev)
+			pNew->pPrev->pNext = pNew;
 	}
 	else if (pCurrent != NULL && after == true)
 	{
 		pNew->pPrev = pCurrent;
 		pNew->pNext = pCurrent->pNext;
 		pCurrent->pNext = pNew;
-		pNew->pNext->pPrev = pNew;
+		if (pNew->pNext)
+			pNew->pNext->pPrev = pNew;
 	}
-	//else if ()
 	return pNew;
 }
 
